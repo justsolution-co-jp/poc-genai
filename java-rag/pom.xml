@@ -57,6 +57,12 @@
 			<artifactId>langchain4j-embeddings-all-minilm-l6-v2</artifactId>
 			<version>0.36.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.pemistahl</groupId>
+			<artifactId>lingua</artifactId>
+			<version>1.2.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

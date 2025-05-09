@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.java_rag.utils.PromptUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -32,8 +33,8 @@ public class RagController {
         List<String> chunks = getChunksFromPython(question);
 
         // 2. 构造 Prompt
-        String prompt = String.join("\n\n", chunks) + "\n\n用户问题：" + question;
-
+        // String prompt = String.join("\n\n", chunks) + "\n\n用户问题：" + question;
+        String prompt = PromptUtil.buildPromptWithLanguageHint(chunks, question);
         // 3. 调用 Ollama 本地模型
         String answer = callOllama(prompt);
 

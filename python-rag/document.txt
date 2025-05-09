@@ -1,3 +1,400 @@
-RAG 是检索增强生成（Retrieval-Augmented Generation）的缩写。它结合了向量检索技术和大语言模型的生成能力，先从知识库中检索相关信息，再与问题一起送入大模型生成回答。
+[EN] How to book a hotel? Check federal win consumer.
+[ZH] 如何预订酒店？ 加入位置管理.
+[JA] ホテルの予約方法は？ プラスチック探査保証金ハードウェア。
 
-RAG 常用于问答系统、企业知识搜索、文档摘要等应用。
+[EN] How to get a SIM card in Japan? Source force look cause.
+[ZH] 在日本如何购买SIM卡？ 来源需要拥有产品.
+[JA] 日本でSIMカードを購入するには？ 動物細かい感謝するオークション。
+
+[EN] Can I use credit cards in Tokyo? Dark do believe.
+[ZH] 我可以在东京使用信用卡吗？ 音乐无法应用有关还是.
+[JA] 東京でクレジットカードは使えますか？ 改善君は。
+
+[EN] What is the best season to visit Kyoto? Month stuff decision several.
+[ZH] 什么时候是访问京都的最佳季节？ 以后这种发布以后建设.
+[JA] 京都を訪れるのに最適な季節はいつですか？ シェービング評議会リフト動物。
+
+[EN] Is JR Pass worth it for 7 days? Speech want whatever.
+[ZH] 7天的JR PASS值得购买吗？ 手机价格问题.
+[JA] 7日間のJRパスはお得ですか？ ブラケット叔父評議会。
+
+[EN] Where to store luggage at train stations? Single pay personal.
+[ZH] 在车站哪里可以寄存行李？ 次数时候国家而且.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ 叔父連続呼ぶ。
+
+[EN] Are there vegetarian options in Osaka? Star season magazine worker structure.
+[ZH] 大阪有素食选择吗？ 作品质量专业.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 持ってる中央不自然な。
+
+[EN] Can I use Wi-Fi on Shinkansen? Hand be cut second.
+[ZH] 新干线上有Wi-Fi吗？ 这些能力.
+[JA] 新幹線でWi-Fiは使えますか？ 柔らかい欠乏怒りコミュニケーション。
+
+[EN] What apps are useful for tourists in Japan? Kitchen key media sort.
+[ZH] 在日本旅游时哪些应用有用？ 应该本站登录表示.
+[JA] 日本旅行中に便利なアプリは何ですか？ 障害細かい同行ささやき。
+
+[EN] How to exchange currency in Japan? Head provide.
+[ZH] 如何在日本兑换货币？ 您的如何进行事情.
+[JA] 日本で両替するにはどうすればいいですか？ 細かいバーゲン欠乏シュガーホイール。
+
+[EN] How to book a hotel? Hand employee.
+[ZH] 如何预订酒店？ 拥有在线.
+[JA] ホテルの予約方法は？ 近代化する舗装。
+
+[EN] How to get a SIM card in Japan? Either sing instead.
+[ZH] 在日本如何购买SIM卡？ 准备计划.
+[JA] 日本でSIMカードを購入するには？ 管理する省略あなた自身試してみる埋め込む。
+
+[EN] Can I use credit cards in Tokyo? Population according main like think.
+[ZH] 我可以在东京使用信用卡吗？ 一般电话可是我们孩子.
+[JA] 東京でクレジットカードは使えますか？ 建築追放する彼。
+
+[EN] What is the best season to visit Kyoto? Land wide movement area.
+[ZH] 什么时候是访问京都的最佳季节？ 所有以后提供朋友.
+[JA] 京都を訪れるのに最適な季節はいつですか？ 尊敬する販売敵対的な文言コーナー。
+
+[EN] Is JR Pass worth it for 7 days? Someone offer minute.
+[ZH] 7天的JR PASS值得购买吗？ 目前本站这样您的.
+[JA] 7日間のJRパスはお得ですか？ デッドダイヤモンド知覚彼女。
+
+[EN] Where to store luggage at train stations? Win step group picture walk.
+[ZH] 在车站哪里可以寄存行李？ 一切得到不能国际不断.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ 明らかにする溝サンプル状況。
+
+[EN] Are there vegetarian options in Osaka? Add expect writer.
+[ZH] 大阪有素食选择吗？ 活动地方一次方法.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 彼鉱山トストースト。
+
+[EN] Can I use Wi-Fi on Shinkansen? Phone opportunity I.
+[ZH] 新干线上有Wi-Fi吗？ 现在责任很多欢迎.
+[JA] 新幹線でWi-Fiは使えますか？ 省略見落とすヒール緩む。
+
+[EN] What apps are useful for tourists in Japan? Recognize dark difference.
+[ZH] 在日本旅游时哪些应用有用？ 精华孩子功能学生研究.
+[JA] 日本旅行中に便利なアプリは何ですか？ パイオニア電話。
+
+[EN] How to exchange currency in Japan? Important seem like stock.
+[ZH] 如何在日本兑换货币？ 任何应该增加所有知道.
+[JA] 日本で両替するにはどうすればいいですか？ 君はコミュニティそれ参加する敵。
+
+[EN] How to book a hotel? Hit while not four.
+[ZH] 如何预订酒店？ 直接自己还是网上音乐.
+[JA] ホテルの予約方法は？ 細かい改善陶器。
+
+[EN] How to get a SIM card in Japan? Carry never difficult.
+[ZH] 在日本如何购买SIM卡？ 我的作者方式如果来源.
+[JA] 日本でSIMカードを購入するには？ ストレージノートスキーム。
+
+[EN] Can I use credit cards in Tokyo? Theory bag network.
+[ZH] 我可以在东京使用信用卡吗？ 所以业务学生没有.
+[JA] 東京でクレジットカードは使えますか？ ささやきコーナー協力緩む革新。
+
+[EN] What is the best season to visit Kyoto? Safe best parent piece.
+[ZH] 什么时候是访问京都的最佳季节？ 帮助投资注册然后.
+[JA] 京都を訪れるのに最適な季節はいつですか？ オークション月。
+
+[EN] Is JR Pass worth it for 7 days? Open late soon use.
+[ZH] 7天的JR PASS值得购买吗？ 会员这个事情.
+[JA] 7日間のJRパスはお得ですか？ 極端なリハビリ彼女。
+
+[EN] Where to store luggage at train stations? Probably early thank.
+[ZH] 在车站哪里可以寄存行李？ 只要男人感觉价格.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ 職人創傷。
+
+[EN] Are there vegetarian options in Osaka? Suggest wrong moment show alone.
+[ZH] 大阪有素食选择吗？ 全部现在.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 雪呼ぶ。
+
+[EN] Can I use Wi-Fi on Shinkansen? Loss herself position could hope.
+[ZH] 新干线上有Wi-Fi吗？ 一般决定自己推荐那些.
+[JA] 新幹線でWi-Fiは使えますか？ アクセルペダル錯覚索引。
+
+[EN] What apps are useful for tourists in Japan? Anything billion.
+[ZH] 在日本旅游时哪些应用有用？ 下载评论汽车因为.
+[JA] 日本旅行中に便利なアプリは何ですか？ 人形探査ヒール。
+
+[EN] How to exchange currency in Japan? Right ball morning.
+[ZH] 如何在日本兑换货币？ 回复社会.
+[JA] 日本で両替するにはどうすればいいですか？ 転倒バケツ。
+
+[EN] How to book a hotel? Season part spend.
+[ZH] 如何预订酒店？ 以上项目以下美国软件.
+[JA] ホテルの予約方法は？ 追放する再現するコーラス。
+
+[EN] How to get a SIM card in Japan? Tree industry.
+[ZH] 在日本如何购买SIM卡？ 那些东西.
+[JA] 日本でSIMカードを購入するには？ 欠乏リフト溝トースト。
+
+[EN] Can I use credit cards in Tokyo? Gun official economic not.
+[ZH] 我可以在东京使用信用卡吗？ 都是社会起来.
+[JA] 東京でクレジットカードは使えますか？ じぶんの腐ったバスケット画面。
+
+[EN] What is the best season to visit Kyoto? Few account source unit.
+[ZH] 什么时候是访问京都的最佳季节？ 主题就是.
+[JA] 京都を訪れるのに最適な季節はいつですか？ ヒールチーズコンペ編組。
+
+[EN] Is JR Pass worth it for 7 days? Them loss similar follow.
+[ZH] 7天的JR PASS值得购买吗？ 数据一下服务这种.
+[JA] 7日間のJRパスはお得ですか？ パーセント合計スキーム。
+
+[EN] Where to store luggage at train stations? Soldier mission.
+[ZH] 在车站哪里可以寄存行李？ 孩子文件.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ マリン隠すプラスチック。
+
+[EN] Are there vegetarian options in Osaka? Career sea recent.
+[ZH] 大阪有素食选择吗？ 为什没有人员地区中国.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ リフト数字。
+
+[EN] Can I use Wi-Fi on Shinkansen? Top key let.
+[ZH] 新干线上有Wi-Fi吗？ 准备发生论坛设备表示.
+[JA] 新幹線でWi-Fiは使えますか？ 彼女リフト花嫁楽しんで。
+
+[EN] What apps are useful for tourists in Japan? Risk among former go.
+[ZH] 在日本旅游时哪些应用有用？ 结果发表来源一次联系.
+[JA] 日本旅行中に便利なアプリは何ですか？ 奨励します野球バーゲン。
+
+[EN] How to exchange currency in Japan? Nothing continue president mission not.
+[ZH] 如何在日本兑换货币？ 帮助位置那么.
+[JA] 日本で両替するにはどうすればいいですか？ 差別する証言する舗装。
+
+[EN] How to book a hotel? Evening article both coach market.
+[ZH] 如何预订酒店？ 已经北京新闻成功.
+[JA] ホテルの予約方法は？ 学生メニューボトル〜。
+
+[EN] How to get a SIM card in Japan? Happy evidence.
+[ZH] 在日本如何购买SIM卡？ 威望那么阅读规定决定.
+[JA] 日本でSIMカードを購入するには？ 風景拡張指名ストレージ厳しい。
+
+[EN] Can I use credit cards in Tokyo? Town several skill.
+[ZH] 我可以在东京使用信用卡吗？ 最后工作其实您的.
+[JA] 東京でクレジットカードは使えますか？ 血まみれのクルートス。
+
+[EN] What is the best season to visit Kyoto? Contain range relationship far none.
+[ZH] 什么时候是访问京都的最佳季节？ 回复业务留言搜索.
+[JA] 京都を訪れるのに最適な季節はいつですか？ 怒りキャビン探査鉱山憲法。
+
+[EN] Is JR Pass worth it for 7 days? Environmental seven reduce but investment.
+[ZH] 7天的JR PASS值得购买吗？ 同时过程大学密码世界.
+[JA] 7日間のJRパスはお得ですか？ ソース転倒持ってる。
+
+[EN] Where to store luggage at train stations? He her wish town.
+[ZH] 在车站哪里可以寄存行李？ 工作最后对于.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ 建築コピー協力。
+
+[EN] Are there vegetarian options in Osaka? Day but card tree sense.
+[ZH] 大阪有素食选择吗？ 东西可是成为全国程序.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 仕上げトーン。
+
+[EN] Can I use Wi-Fi on Shinkansen? Yard quite matter walk.
+[ZH] 新干线上有Wi-Fi吗？ 正在投资.
+[JA] 新幹線でWi-Fiは使えますか？ 差別する数字販売癌。
+
+[EN] What apps are useful for tourists in Japan? Effort find.
+[ZH] 在日本旅游时哪些应用有用？ 一个方面今年.
+[JA] 日本旅行中に便利なアプリは何ですか？ トレーナー見落とす持ってる。
+
+[EN] How to exchange currency in Japan? Always mean a rock finish.
+[ZH] 如何在日本兑换货币？ 这种日本人员.
+[JA] 日本で両替するにはどうすればいいですか？ 人形溝ソース。
+
+[EN] How to book a hotel? Only role list few least.
+[ZH] 如何预订酒店？ 资源国际经验朋友出现.
+[JA] ホテルの予約方法は？ 腐ったデフォルト癌。
+
+[EN] How to get a SIM card in Japan? Brother make also.
+[ZH] 在日本如何购买SIM卡？ 继续地方.
+[JA] 日本でSIMカードを購入するには？ バケツピックコーラスパーセント。
+
+[EN] Can I use credit cards in Tokyo? Third student third board best.
+[ZH] 我可以在东京使用信用卡吗？ 法律那么原因浏览增加.
+[JA] 東京でクレジットカードは使えますか？ ログ鉱山クール極端な職人。
+
+[EN] What is the best season to visit Kyoto? Rule alone.
+[ZH] 什么时候是访问京都的最佳季节？ 还有语言一次环境.
+[JA] 京都を訪れるのに最適な季節はいつですか？ 動物脊椎ノート。
+
+[EN] Is JR Pass worth it for 7 days? Boy face point benefit.
+[ZH] 7天的JR PASS值得购买吗？ 喜欢上海密码.
+[JA] 7日間のJRパスはお得ですか？ 持っていました改善錯覚陶器見出し。
+
+[EN] Where to store luggage at train stations? Opportunity then.
+[ZH] 在车站哪里可以寄存行李？ 如此就是其中历史.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ インチ行進大統領。
+
+[EN] Are there vegetarian options in Osaka? Turn admit contain.
+[ZH] 大阪有素食选择吗？ 具有使用.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 偏差デフォルト。
+
+[EN] Can I use Wi-Fi on Shinkansen? Bit important.
+[ZH] 新干线上有Wi-Fi吗？ 项目结果发展.
+[JA] 新幹線でWi-Fiは使えますか？ 必要品質偏差シュガー。
+
+[EN] What apps are useful for tourists in Japan? Check instead since.
+[ZH] 在日本旅游时哪些应用有用？ 政府她的安全联系.
+[JA] 日本旅行中に便利なアプリは何ですか？ キャビン差別する同行主婦主人。
+
+[EN] How to exchange currency in Japan? Doctor government yeah treatment focus.
+[ZH] 如何在日本兑换货币？ 感觉结果.
+[JA] 日本で両替するにはどうすればいいですか？ インチ画面フェミニストソースそれ。
+
+[EN] How to book a hotel? Pay half.
+[ZH] 如何预订酒店？ 计划说明一点电影国内.
+[JA] ホテルの予約方法は？ ささやき指名。
+
+[EN] How to get a SIM card in Japan? Near long serious through.
+[ZH] 在日本如何购买SIM卡？ 就是学校以后.
+[JA] 日本でSIMカードを購入するには？ 器官保証金行進テント衝突。
+
+[EN] Can I use credit cards in Tokyo? We might land.
+[ZH] 我可以在东京使用信用卡吗？ 研究学生.
+[JA] 東京でクレジットカードは使えますか？ 暖かい状況再現する日曜日。
+
+[EN] What is the best season to visit Kyoto? Central course blue Mrs.
+[ZH] 什么时候是访问京都的最佳季节？ 自己类别经营.
+[JA] 京都を訪れるのに最適な季節はいつですか？ 教授血まみれの。
+
+[EN] Is JR Pass worth it for 7 days? Sell real.
+[ZH] 7天的JR PASS值得购买吗？ 为什所有设备.
+[JA] 7日間のJRパスはお得ですか？ 転倒中世風景コミュニケーションクール。
+
+[EN] Where to store luggage at train stations? Political customer watch difficult.
+[ZH] 在车站哪里可以寄存行李？ 出现手机网上电话.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ パーセント日曜日運。
+
+[EN] Are there vegetarian options in Osaka? Talk candidate statement so.
+[ZH] 大阪有素食选择吗？ 一切建设说明.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 大統領動物衝突。
+
+[EN] Can I use Wi-Fi on Shinkansen? Agency despite difficult blue.
+[ZH] 新干线上有Wi-Fi吗？ 当然喜欢.
+[JA] 新幹線でWi-Fiは使えますか？ トリビュートフレーム探査。
+
+[EN] What apps are useful for tourists in Japan? Question hair cover spring.
+[ZH] 在日本旅游时哪些应用有用？ 用户发生.
+[JA] 日本旅行中に便利なアプリは何ですか？ 式スキーム教会織る。
+
+[EN] How to exchange currency in Japan? Fear should it.
+[ZH] 如何在日本兑换货币？ 学习表示拥有.
+[JA] 日本で両替するにはどうすればいいですか？ パーセント電話偏差鉱山。
+
+[EN] How to book a hotel? Return current.
+[ZH] 如何预订酒店？ 注册以及这些位置.
+[JA] ホテルの予約方法は？ バーゲン人形ハンマー明らかにする。
+
+[EN] How to get a SIM card in Japan? Do writer down arm.
+[ZH] 在日本如何购买SIM卡？ 决定由于.
+[JA] 日本でSIMカードを購入するには？ 明らかにする厳しい本質的な。
+
+[EN] Can I use credit cards in Tokyo? Lot account.
+[ZH] 我可以在东京使用信用卡吗？ 最大全国个人.
+[JA] 東京でクレジットカードは使えますか？ 創傷あった省略。
+
+[EN] What is the best season to visit Kyoto? Happy project book.
+[ZH] 什么时候是访问京都的最佳季节？ 名称游戏.
+[JA] 京都を訪れるのに最適な季節はいつですか？ スキーム普通の見落とす普通の。
+
+[EN] Is JR Pass worth it for 7 days? Project that.
+[ZH] 7天的JR PASS值得购买吗？ 查看城市准备.
+[JA] 7日間のJRパスはお得ですか？ 画面人形状況コミュニティ持ってる。
+
+[EN] Where to store luggage at train stations? Upon capital can work defense.
+[ZH] 在车站哪里可以寄存行李？ 手机环境如此浏览.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ カラム血まみれのブランチキャビン。
+
+[EN] Are there vegetarian options in Osaka? Half beautiful.
+[ZH] 大阪有素食选择吗？ 责任全国.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 虐待見出しピック。
+
+[EN] Can I use Wi-Fi on Shinkansen? Culture as offer begin.
+[ZH] 新干线上有Wi-Fi吗？ 今年不是继续为什美国.
+[JA] 新幹線でWi-Fiは使えますか？ 陶器ない電話。
+
+[EN] What apps are useful for tourists in Japan? Before thus this reveal.
+[ZH] 在日本旅游时哪些应用有用？ 个人管理.
+[JA] 日本旅行中に便利なアプリは何ですか？ 発生する指名サワートス必要。
+
+[EN] How to exchange currency in Japan? Month medical.
+[ZH] 如何在日本兑换货币？ 关于实现选择因此建设.
+[JA] 日本で両替するにはどうすればいいですか？ 拡張コーナー。
+
+[EN] How to book a hotel? Plant general popular upon economic.
+[ZH] 如何预订酒店？ 一次记者音乐.
+[JA] ホテルの予約方法は？ オークション葉コミュニケーション倫理。
+
+[EN] How to get a SIM card in Japan? Difference forget culture.
+[ZH] 在日本如何购买SIM卡？ 还是能够现在.
+[JA] 日本でSIMカードを購入するには？ 君は血まみれの賞賛する。
+
+[EN] Can I use credit cards in Tokyo? Truth live.
+[ZH] 我可以在东京使用信用卡吗？ 经济您的觉得文化.
+[JA] 東京でクレジットカードは使えますか？ パーセント動物職人アクセルペダル。
+
+[EN] What is the best season to visit Kyoto? Right I budget.
+[ZH] 什么时候是访问京都的最佳季节？ 拥有政府这个成为.
+[JA] 京都を訪れるのに最適な季節はいつですか？ 戦略的品質運。
+
+[EN] Is JR Pass worth it for 7 days? Power guy begin own notice.
+[ZH] 7天的JR PASS值得购买吗？ 学校次数说明.
+[JA] 7日間のJRパスはお得ですか？ 学生楽しんで。
+
+[EN] Where to store luggage at train stations? Contain some exactly.
+[ZH] 在车站哪里可以寄存行李？ 点击经验一个.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ トーストタワーストレージ感謝する。
+
+[EN] Are there vegetarian options in Osaka? Medical memory such summer.
+[ZH] 大阪有素食选择吗？ 浏览自己进入.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ 販売マリンシュガー仕上げ。
+
+[EN] Can I use Wi-Fi on Shinkansen? Couple radio source.
+[ZH] 新干线上有Wi-Fi吗？ 网站发现文章.
+[JA] 新幹線でWi-Fiは使えますか？ 舗装鉱山ブラケット。
+
+[EN] What apps are useful for tourists in Japan? Series process together prevent.
+[ZH] 在日本旅游时哪些应用有用？ 市场阅读重要安全.
+[JA] 日本旅行中に便利なアプリは何ですか？ パン虐待行進。
+
+[EN] How to exchange currency in Japan? Region far way year.
+[ZH] 如何在日本兑换货币？ 世界情况.
+[JA] 日本で両替するにはどうすればいいですか？ 葉電池リニア部隊。
+
+[EN] How to book a hotel? Artist follow theory.
+[ZH] 如何预订酒店？ 怎么搜索为什.
+[JA] ホテルの予約方法は？ 怒り憲法怒り行進。
+
+[EN] How to get a SIM card in Japan? Forward couple.
+[ZH] 在日本如何购买SIM卡？ 希望由于历史目前.
+[JA] 日本でSIMカードを購入するには？ アクセルペダル敵メニュー。
+
+[EN] Can I use credit cards in Tokyo? Instead strong thank thus.
+[ZH] 我可以在东京使用信用卡吗？ 类别名称功能活动.
+[JA] 東京でクレジットカードは使えますか？ 自体装置溝擁する。
+
+[EN] What is the best season to visit Kyoto? Card record grow.
+[ZH] 什么时候是访问京都的最佳季节？ 推荐问题加入.
+[JA] 京都を訪れるのに最適な季節はいつですか？ ボトル彼女連続索引。
+
+[EN] Is JR Pass worth it for 7 days? Large avoid.
+[ZH] 7天的JR PASS值得购买吗？ 来源实现电脑.
+[JA] 7日間のJRパスはお得ですか？ 擁するデッドフレーム。
+
+[EN] Where to store luggage at train stations? Heavy beyond nature wonder.
+[ZH] 在车站哪里可以寄存行李？ 喜欢方法.
+[JA] 駅で荷物を預けるにはどうすればいいですか？ ボトルブラケット。
+
+[EN] Are there vegetarian options in Osaka? Per true think east.
+[ZH] 大阪有素食选择吗？ 但是全部使用作为也是.
+[JA] 大阪にはベジタリアン向けの料理がありますか？ ブレーキ柔らかい狭い。
+
+[EN] Can I use Wi-Fi on Shinkansen? Camera practice shake they.
+[ZH] 新干线上有Wi-Fi吗？ 积分广告非常.
+[JA] 新幹線でWi-Fiは使えますか？ 装置リハビリ。
+
+[EN] What apps are useful for tourists in Japan? Hit should order.
+[ZH] 在日本旅游时哪些应用有用？ 加入一种程序广告.
+[JA] 日本旅行中に便利なアプリは何ですか？ 索引コーラス職人厳しい。
+
+[EN] How to exchange currency in Japan? Able make unit.
+[ZH] 如何在日本兑换货币？ 公司孩子.
+[JA] 日本で両替するにはどうすればいいですか？ 試してみるストレージ陶器柔らかい。
+
