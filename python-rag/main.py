@@ -6,9 +6,20 @@ engine = RAGEngine()
 
 @app.route("/retrieval", methods=["POST"])
 def retrieve():
-    query = request.json.get("question")
+    data = request.get_json()
+    query = data.get("question")
+
+    # 1. 相似文档检索
     chunks = engine.retrieve(query)
-    return jsonify({"chunks": chunks})
+
+    # 2. 拼接 Prompt
+    prompt = "\n\n".join(chunks) + f"\n\n用户问题：{query}"
+
+    # 3. 返回给 Java 构造的内容
+    return jsonify({
+        "chunks": chunks,
+        "prompt": prompt
+    })
 
 if __name__ == "__main__":
-    app.run(port=5002)
+    app.run(host="0.0.0.0", port=5002)
