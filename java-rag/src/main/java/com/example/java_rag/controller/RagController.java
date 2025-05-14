@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,15 +33,16 @@ public class RagController {
 
     CodeAgent agent;
 
-     public RagController() {
+    public RagController() {
         // 初始化 LangChain4j Agent
         this.agent = AiServices.builder(CodeAgent.class)
-        .chatLanguageModel(OllamaChatModel.builder()
-            .baseUrl("http://localhost:11434")
-            .modelName("mistral")
-            .build())
-        .tools(new GitTool())
-        .build();
+                .chatLanguageModel(OllamaChatModel.builder()
+                        .baseUrl("http://localhost:11434")
+                        .modelName("qwen2")
+                        .timeout(Duration.ofSeconds(90))
+                        .build())
+                .tools(new GitTool())
+                .build();
     }
 
     @PostMapping("/ask")
@@ -65,6 +67,7 @@ public class RagController {
 
     @PostMapping("/agent")
     public ResponseEntity<String> agent(@RequestBody String command) {
+        System.out.println("接收到指令>>>>" + command);
         String result = agent.chat(command);
         return ResponseEntity.ok(result);
     }
@@ -112,6 +115,5 @@ public class RagController {
             throw new RuntimeException("调用 Ollama 模型失败", e);
         }
     }
-
 
 }
