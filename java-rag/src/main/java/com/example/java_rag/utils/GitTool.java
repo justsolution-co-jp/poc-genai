@@ -25,6 +25,7 @@ public class GitTool {
             // git.add().addFilepattern(".").call();
 
             for (String filePath : filePaths) {
+                System.out.println(" 执行文件>>>>>>" + filePaths);
                 git.add().addFilepattern(filePath).call();
             }
 
