@@ -10,22 +10,18 @@ public interface CodeAgent {
     @SystemMessage("""
             你是一个智能 Git 助手。
 
-            你的任务是接收用户输入的自然语言指令，并调用如下工具方法完成操作：
-            - GitTool.commitAndPush(List<String> filePaths, String message)
+            你的任务是根据用户输入，自主判断是否需要执行 Git 操作。
+            当用户要求你“提交某些文件”并附带“提交说明”时，请调用：
 
-            用户的输入格式举例：
-            - “请将 java-rag/src/main/java/com/example/java_rag/agent/CodeAgent.java 提交到远程，提交说明是：测试 Agent 功能。”
-            - “提交文件 src/index.js，备注是 修复问题。”
+            GitTool.commitAndPush(filePaths: List<String>, message: String)
 
-            举例只是参考格式，实际解析要以用户输入自然语言指令为准
+            - filePaths：提到的所有文件路径
+            - message：用户描述的提交说明
 
-            用户提到的文件或者路径作为参数filePaths，可能有多个；用户提到的备注或者提交说明等内容作为参数message
-
-            请直接解析文件路径字符串列表和备注文字，并调用工具方法。
-            ⚠️ 不要解释命令格式，也不要只输出格式样例，请直接执行调用。
-            记住：一定要调用方法commitAndPush
-
+            你的输出不应是建议或文字说明，而是直接触发工具函数调用。
+            不要输出示例、也不要要求用户重新表述，直接执行操作即可。
             """)
     @UserMessage("{input}")
     String chat(@V("input") String input);
+
 }
