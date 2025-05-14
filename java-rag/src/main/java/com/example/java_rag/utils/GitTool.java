@@ -25,7 +25,7 @@ public class GitTool {
                 git.add().addFilepattern(filePath).call();
             }
 
-            git.commit().setMessage(message).call();
+            // git.commit().setMessage(message).call();
             // git.push().call();
 
             String username = System.getenv("GITHUB_USERNAME");
@@ -38,6 +38,7 @@ public class GitTool {
                     .setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, token))
                     .call();
 
+            // 
             ObjectId head = git.getRepository().resolve("HEAD");
             System.out.println("🔍 当前 HEAD commit: " + head.getName());
 
