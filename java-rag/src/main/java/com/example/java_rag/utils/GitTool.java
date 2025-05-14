@@ -1,10 +1,12 @@
 package com.example.java_rag.utils;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.List;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.ObjectId;
+import org.eclipse.jgit.lib.TextProgressMonitor;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.RemoteRefUpdate;
@@ -14,10 +16,11 @@ import dev.langchain4j.agent.tool.Tool;
 
 public class GitTool {
 
-    private static final String DEFAULT_REPO_PATH = "/home/just/projects/poc-genai/";
+    private static final String DEFAULT_REPO_PATH = "/home/just/projects/aiDemo/poc-genai";
 
     @Tool(name = "commitAndPush")
     public String commitAndPush(List<String> filePaths, String message) {
+        System.out.println("🔥🔥🔥 commitAndPush 执行了！");
         try (Git git = Git.open(new File(DEFAULT_REPO_PATH))) {
             // git.add().addFilepattern(".").call();
 
@@ -25,8 +28,7 @@ public class GitTool {
                 git.add().addFilepattern(filePath).call();
             }
 
-            // git.commit().setMessage(message).call();
-            // git.push().call();
+            git.commit().setMessage(message).call();
 
             String username = System.getenv("GITHUB_USERNAME");
             String token = System.getenv("GITHUB_TOKEN");
@@ -34,16 +36,18 @@ public class GitTool {
             String branch = git.getRepository().getBranch();
 
             // git.pull()
-            //         .setRebase(true)
-            //         .setRemote("origin")
-            //         .setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, token))
-            //         .call();
+            // .setRebase(true)
+            // .setRemote("origin")
+            // .setCredentialsProvider(new UsernamePasswordCredentialsProvider(username,
+            // token))
+            // .call();
 
             Iterable<PushResult> results = git.push()
                     .setForce(false)
                     .setRemote("origin")
-                    .setRefSpecs(new RefSpec(branch + ":" + branch))
+                    .setRefSpecs(new RefSpec("refs/heads/" + branch + ":refs/heads/" + branch))
                     .setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, token))
+                    .setProgressMonitor(new TextProgressMonitor(new PrintWriter(System.out, true)))
                     .call();
 
             //
