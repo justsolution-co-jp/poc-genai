@@ -16,7 +16,7 @@ public class GitTool {
 
     private static final String DEFAULT_REPO_PATH = "/home/just/projects/poc-genai/";
 
-    @Tool
+    @Tool(name = "commitAndPush")
     public String commitAndPush(List<String> filePaths, String message) {
         try (Git git = Git.open(new File(DEFAULT_REPO_PATH))) {
             // git.add().addFilepattern(".").call();
@@ -32,13 +32,21 @@ public class GitTool {
             String token = System.getenv("GITHUB_TOKEN");
 
             String branch = git.getRepository().getBranch();
+
+            // git.pull()
+            //         .setRebase(true)
+            //         .setRemote("origin")
+            //         .setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, token))
+            //         .call();
+
             Iterable<PushResult> results = git.push()
+                    .setForce(false)
                     .setRemote("origin")
                     .setRefSpecs(new RefSpec(branch + ":" + branch))
                     .setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, token))
                     .call();
 
-            // 
+            //
             ObjectId head = git.getRepository().resolve("HEAD");
             System.out.println("🔍 当前 HEAD commit: " + head.getName());
 
