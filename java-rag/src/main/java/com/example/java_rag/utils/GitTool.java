@@ -1,6 +1,7 @@
 package com.example.java_rag.utils;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.ObjectId;
@@ -16,9 +17,14 @@ public class GitTool {
     private static final String DEFAULT_REPO_PATH = "/home/just/projects/poc-genai/";
 
     @Tool
-    public String commitAndPush(String repoPath, String message) {
+    public String commitAndPush(List<String> filePaths, String message) {
         try (Git git = Git.open(new File(DEFAULT_REPO_PATH))) {
-            git.add().addFilepattern(".").call();
+            // git.add().addFilepattern(".").call();
+
+            for (String filePath : filePaths) {
+                git.add().addFilepattern(filePath).call();
+            }
+
             git.commit().setMessage(message).call();
             // git.push().call();
 
