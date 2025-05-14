@@ -14,9 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.java_rag.agent.CodeAgent;
+import com.example.java_rag.utils.GitTool;
 import com.example.java_rag.utils.PromptUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dev.langchain4j.model.ollama.OllamaChatModel;
+import dev.langchain4j.service.AiServices;
 
 @RestController
 @RequestMapping("/rag")
@@ -24,6 +29,19 @@ public class RagController {
 
     private final ObjectMapper mapper = new ObjectMapper();
     private final HttpClient client = HttpClient.newHttpClient();
+
+    CodeAgent agent;
+
+     public RagController() {
+        // 初始化 LangChain4j Agent
+        this.agent = AiServices.builder(CodeAgent.class)
+        .chatLanguageModel(OllamaChatModel.builder()
+            .baseUrl("http://localhost:11434")
+            .modelName("mistral")
+            .build())
+        .tools(new GitTool())
+        .build();
+    }
 
     @PostMapping("/ask")
     public ResponseEntity<?> ask(@RequestBody Map<String, String> body) {
@@ -43,6 +61,12 @@ public class RagController {
                 "chunks", chunks,
                 "prompt", prompt,
                 "answer", answer));
+    }
+
+    @PostMapping("/agent")
+    public ResponseEntity<String> agent(@RequestBody String command) {
+        String result = agent.chat(command);
+        return ResponseEntity.ok(result);
     }
 
     private List<String> getChunksFromPython(String question) {
@@ -88,4 +112,6 @@ public class RagController {
             throw new RuntimeException("调用 Ollama 模型失败", e);
         }
     }
+
+
 }
