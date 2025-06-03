@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>语音识别 + LLM 回答 + 音频播放</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+    }
+
+    #status,
+    #transcript,
+    #response {
+      margin-top: 1em;
+    }
+
+    #status {
+      color: green;
+    }
+
+    #transcript {
+      color: blue;
+    }
+
+    #response {
+      font-weight: bold;
+    }
+
+    button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+    }
+
+    #audio-container {
+      margin-top: 1em;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>实时语音识别 + LLM 回答 + 语音播放</h1>
+  <button id="start-btn">开始识别并提问</button>
+  <div id="status"></div>
+  <div id="transcript"></div>
+  <div id="response"></div>
+  <div id="audio-container">
+    <audio id="audio" controls></audio>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById('start-btn');
+    const statusDiv = document.getElementById('status');
+    const transcriptDiv = document.getElementById('transcript');
+    const responseDiv = document.getElementById('response');
+    const audio = document.getElementById('audio');
+    const audioContainer = document.getElementById('audio-container');
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'zh-CN';
+    recognition.interimResults = false;
+    recognition.continuous = false;
+
+    startBtn.addEventListener('click', () => {
+      // 清空旧内容
+      statusDiv.textContent = '🎙️ 正在聆听...';
+      transcriptDiv.textContent = '';
+      responseDiv.textContent = '';
+      audioContainer.style.display = 'none';
+      audio.src = '';
+      recognition.start();
+    });
+
+    recognition.onresult = async (event) => {
+      const transcript = event.results[0][0].transcript;
+      transcriptDiv.textContent = `📝 识别内容：${transcript}`;
+      statusDiv.textContent = '📤 提交问题中...';
+
+      try {
+        // 发送问题请求
+        const res = await fetch('http://localhost:8080/rag/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: transcript })
+        });
+        const data = await res.json();
+        const answer = data.answer || '（无内容）';
+
+        responseDiv.textContent = `🤖 回答：${answer}`;
+        statusDiv.textContent = '🎧 正在生成语音...';
+
+        // 请求生成语音
+        const audioRes = await fetch('http://localhost:8080/rag/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: answer })
+        });
+        const audioData = await audioRes.json();
+
+        const audioUrl = `http://localhost:8080/rag/audio?path=${encodeURIComponent(audioData.path)}`;
+        audio.src = audioUrl;
+        audioContainer.style.display = 'block';
+        audio.play();
+
+        statusDiv.textContent = '✅ 回答完成，正在播放语音';
+      } catch (err) {
+        responseDiv.textContent = '❌ 请求失败';
+        statusDiv.textContent = '';
+        console.error(err);
+      }
+    };
+
+    recognition.onerror = (e) => {
+      statusDiv.textContent = '❌ 识别出错：' + e.error;
+    };
+  </script>
+</body>
+
+</html>

@@ -1,7 +1,8 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
 from qdrant_client import QdrantClient
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
+
 from langchain_qdrant import Qdrant
 from langchain.tools import tool
 from pydantic import BaseModel, Field

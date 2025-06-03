@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>智能问答</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        #answer {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #loading {
+            color: gray;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>智能问答</h2>
+
+    <input type="text" id="questionInput" placeholder="请输入你的问题..." style="width: 300px; padding: 5px;">
+    <button onclick="askQuestion()">提问</button>
+
+    <div id="answer"></div>
+
+    <script>
+        function askQuestion() {
+            const question = document.getElementById("questionInput").value.trim();
+            const answerDiv = document.getElementById("answer");
+
+            if (!question) {
+                alert("请输入问题！");
+                return;
+            }
+
+            // 显示加载提示
+            answerDiv.innerHTML = '<div id="loading">🤖 正在思考中，请稍候...</div>';
+
+            fetch("/rag/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    answerDiv.innerHTML = `<strong>答复：</strong> ${data.answer}`;
+                    if (data.audio) {
+                        const audio = new Audio("/rag/audio?path=/tmp/tts_output.wav");
+                        audio.play().catch(err => console.warn("音频播放失败：", err));
+                    }
+                })
+                .catch(error => {
+                    console.error("请求失败:", error);
+                    answerDiv.innerHTML = '<span style="color: red;">❌ 请求失败，请重试。</span>';
+                });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>语音识别上传演示</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2em;
+        }
+
+        button {
+            padding: 0.6em 1.2em;
+            font-size: 1em;
+        }
+
+        #log {
+            margin-top: 1em;
+            white-space: pre-wrap;
+        }
+
+        #timer {
+            margin-top: 0.5em;
+            font-size: 1.2em;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>语音识别并上传</h1>
+    <button id="start">🎙️ 开始录音</button>
+    <button id="stop" disabled>⏹️ 停止并上传</button>
+    <div id="timer"></div>
+    <div id="log"></div>
+
+    <script>
+        let mediaRecorder;
+        let chunks = [];
+        let countdownTimer;
+        let timeLeft = 180; // 3分钟（秒）
+
+        const log = (text) => {
+            document.getElementById('log').textContent = text;
+        };
+
+        const updateTimer = () => {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = `倒计时：${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            if (timeLeft === 0) {
+                stopRecording();
+            } else {
+                timeLeft--;
+                countdownTimer = setTimeout(updateTimer, 1000);
+            }
+        };
+
+        const stopRecording = () => {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+                clearTimeout(countdownTimer);
+                document.getElementById('start').disabled = false;
+                document.getElementById('stop').disabled = true;
+                document.getElementById('timer').textContent = '';
+            }
+        };
+
+        document.getElementById('start').onclick = async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            chunks = [];
+            timeLeft = 180;
+
+            mediaRecorder.ondataavailable = e => chunks.push(e.data);
+
+            mediaRecorder.onstop = async () => {
+                const blob = new Blob(chunks, { type: 'audio/webm' });
+                const formData = new FormData();
+                formData.append('file', blob, 'speech.webm');
+
+                log('⏳ 上传中...');
+                const res = await fetch('http://localhost:8888/transcribe', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                log(`✅ 识别结果：\n${data.text}`);
+            };
+
+            mediaRecorder.start();
+            updateTimer();
+            document.getElementById('start').disabled = true;
+            document.getElementById('stop').disabled = false;
+            log('🎙️ 正在录音... 最长 3 分钟');
+        };
+
+        document.getElementById('stop').onclick = stopRecording;
+    </script>
+</body>
+
+</html>

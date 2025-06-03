@@ -1,4 +1,7 @@
 flask
 langchain
-faiss-cpu
-sentence-transformers
+langchain-community
+qdrant-client
+openai
+tiktoken
+httpx

@@ -69,6 +69,11 @@
 			<version>0.36.0</version>
 		</dependency>
 		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-open-ai</artifactId>
+			<version>0.36.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.jgit</groupId>
 			<artifactId>org.eclipse.jgit</artifactId>
 			<version>6.7.0.202309050840-r</version>
@@ -78,6 +83,13 @@
 			<groupId>org.eclipse.jgit</groupId>
 			<artifactId>org.eclipse.jgit</artifactId>
 			<version>6.7.0.202309050840-r</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.openai/openai-java -->
+		<dependency>
+			<groupId>com.openai</groupId>
+			<artifactId>openai-java</artifactId>
+			<version>2.3.0</version>
 		</dependency>
 
 	</dependencies>

@@ -1,12 +1,18 @@
+import tempfile
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from langchain.agents import AgentExecutor, create_openai_functions_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_community.chat_models import ChatOllama
+import whisper
 from rag_engine import RAGEngine, git_commit_and_optional_push
 from langchain.agents import Tool
 from langchain.agents import initialize_agent, AgentType
 
+
+
 app = Flask(__name__)
+CORS(app)
 engine = RAGEngine()
 
 llm = ChatOllama(model="mistral")
@@ -73,6 +79,19 @@ def retrieval():
     chunks = engine.retrieve(query)
     return jsonify({"chunks": chunks})
 
+
+model = whisper.load_model("medium")  # 可换成 small, medium, large
+
+@app.route("/transcribe", methods=["POST"])
+def transcribe():
+    audio_file = request.files["file"]
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp:
+        audio_file.save(tmp.name)
+        result = model.transcribe(tmp.name, language="zh")
+        return jsonify({"text": result["text"]})
+
 if __name__ == "__main__":
     print("🚀 Flask 启动中...")
-    app.run(host="0.0.0.0", port=5002)
+    app.run(host="0.0.0.0", port=8888)
+    
+print(app.url_map)
