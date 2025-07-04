@@ -250,9 +250,11 @@ public class RagController {
             // String textParam = URLEncoder.encode("你好，这是测试语音。", StandardCharsets.UTF_8);
             // String speaker = URLEncoder.encode("Daisy Studious", StandardCharsets.UTF_8);
 
+            String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);
+
             String url = String.format(
                     "http://localhost:5002/api/tts?text=%s",
-                    text);
+                    encodedText);
 
             // 构建 GET 请求
             HttpRequest request = HttpRequest.newBuilder()

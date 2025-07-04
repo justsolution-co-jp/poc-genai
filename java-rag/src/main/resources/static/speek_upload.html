@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <title>语音识别上传演示</title>
+    <meta charset="UTF-8" />
+    <title>语音识别上传 + LLM 回答 + 播放</title>
     <style>
         body {
             font-family: sans-serif;
@@ -25,24 +25,33 @@
             font-size: 1.2em;
             color: blue;
         }
+
+        #audio-container {
+            margin-top: 1em;
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-    <h1>语音识别并上传</h1>
+    <h1>语音识别 + AI 回答 + 播放语音</h1>
     <button id="start">🎙️ 开始录音</button>
     <button id="stop" disabled>⏹️ 停止并上传</button>
     <div id="timer"></div>
     <div id="log"></div>
+    <div id="audio-container">
+        <audio id="audio" controls></audio>
+    </div>
 
     <script>
         let mediaRecorder;
         let chunks = [];
         let countdownTimer;
-        let timeLeft = 180; // 3分钟（秒）
+        let timeLeft = 180;
 
         const log = (text) => {
-            document.getElementById('log').textContent = text;
+            const logEl = document.getElementById('log');
+            logEl.innerHTML += `<br>${text.replace(/\n/g, '<br>')}`;
         };
 
         const updateTimer = () => {
@@ -69,6 +78,7 @@
         };
 
         document.getElementById('start').onclick = async () => {
+            document.getElementById('log').textContent = '';
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             mediaRecorder = new MediaRecorder(stream);
             chunks = [];
@@ -82,12 +92,45 @@
                 formData.append('file', blob, 'speech.webm');
 
                 log('⏳ 上传中...');
-                const res = await fetch('http://localhost:8888/transcribe', {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await res.json();
-                log(`✅ 识别结果：\n${data.text}`);
+                try {
+                    const res = await fetch('http://localhost:8888/transcribe', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    const question = data.text || '';
+                    log(`📝 识别内容：${question}`);
+
+                    // 调用 Chat Agent 接口
+                    const chatRes = await fetch('http://localhost:8080/openAi/chatWithAgent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ question })
+                    });
+                    const chatData = await chatRes.json();
+                    const answer = chatData.answer || '（无回答）';
+
+                    // const currentLog = document.getElementById('log').textContent;
+                    log(`🤖 AI 回答：${answer}`);
+
+
+                    // 请求生成语音
+                    const ttsRes = await fetch('http://localhost:8080/rag/generate', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ text: answer })
+                    });
+                    const ttsData = await ttsRes.json();
+                    const audioUrl = `http://localhost:8080/rag/audio?path=${encodeURIComponent(ttsData.path)}`;
+
+                    const audio = document.getElementById('audio');
+                    audio.src = audioUrl;
+                    document.getElementById('audio-container').style.display = 'block';
+                    audio.play();
+                } catch (err) {
+                    log('❌ 出错：' + err.message);
+                    console.error(err);
+                }
             };
 
             mediaRecorder.start();

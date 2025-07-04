@@ -81,7 +81,7 @@
 
       try {
         // 发送问题请求
-        const res = await fetch('http://localhost:8080/rag/ask', {
+        const res = await fetch('http://localhost:8080/openAi/chatWithAgent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ question: transcript })
@@ -100,12 +100,18 @@
         });
         const audioData = await audioRes.json();
 
-        const audioUrl = `http://localhost:8080/rag/audio?path=${encodeURIComponent(audioData.path)}`;
-        audio.src = audioUrl;
-        audioContainer.style.display = 'block';
-        audio.play();
 
-        statusDiv.textContent = '✅ 回答完成，正在播放语音';
+
+        const timestamp = Date.now(); // 防止浏览器缓存
+        const audioUrl = `http://localhost:8080/rag/audio?path=${encodeURIComponent(audioData.path)}&t=${timestamp}`;
+        audioContainer.style.display = 'block';
+        audio.src = audioUrl;
+        audio.load();
+
+        audio.oncanplaythrough = () => {
+          audio.play();
+          statusDiv.textContent = '✅ 回答完成，正在播放语音';
+        };
       } catch (err) {
         responseDiv.textContent = '❌ 请求失败';
         statusDiv.textContent = '';
