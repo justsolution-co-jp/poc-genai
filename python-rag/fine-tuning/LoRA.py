@@ -49,6 +49,14 @@ dataset = load_dataset("wikitext", "wikitext-2-raw-v1", split="train[:1%]")
 def tokenize(batch):
     return tokenizer(batch["text"], truncation=True, padding="max_length", max_length=128)
 
+# 忽略 padding 的 label，避免把 <pad> 位置当作学习目标。
+IGNORE_INDEX = -100
+def mask_pad(batch):
+    labels = []
+    for ids, mask in zip(batch["input_ids"], batch["attention_mask"]):
+        labels.append([tok if m==1 else IGNORE_INDEX for tok, m in zip(ids, mask)])
+    batch["labels"] = labels
+    return batch
 # 批量地把整个数据集转换成模型可以直接训练的格式
 dataset = dataset.map(tokenize, batched=True)
 # 把数据转换成 PyTorch Tensor 格式，只保留模型需要的输入列，让后续训练更高效
@@ -61,40 +69,46 @@ dataset = dataset.map(lambda x: {"labels": x["input_ids"]})
 # ---------------------------
 # 3. LoRA 配置函数（可设置 ΔW）
 # ---------------------------
+# 给基座模型挂上 LoRA 适配器（低秩矩阵 ΔW），能用很少的参数和算力对模型进行微调。
 def get_lora_model(base, r=8, alpha=32, dropout=0.1, target=["q_proj","v_proj"]):
     config = LoraConfig(
         r=r,
         lora_alpha=alpha,
-        target_modules=target,
+        target_modules=target,  # 在这些层加 LoRA
         lora_dropout=dropout,
         bias="none",
         task_type="CAUSAL_LM"
     )
+    # 遍历 base_model 所有参数，把它们的 requires_grad = False（即冻结）
+    # 只允许 LoRA 新增的参数参与训练
+    # 会在 q_proj、v_proj 层旁边挂上低秩矩阵 A、B，形成 ΔW
     return get_peft_model(base, config)
 
 # ---------------------------
 # 4. 默认 ΔW：新建并训练
 # ---------------------------
 model = get_lora_model(base_model)
+# 打印“可训练参数/总参数/占比”，用来确认 只有 LoRA 参数在训练（应≈0.1%～1%）
 model.print_trainable_parameters()
 
 training_args = TrainingArguments(
-    output_dir="./outputs_phi3_lora_default",
-    per_device_train_batch_size=2,
-    gradient_accumulation_steps=4,
-    num_train_epochs=1,
-    learning_rate=2e-4,
-    fp16=True,
-    logging_steps=5,
-    save_strategy="epoch"
+    output_dir="./outputs_phi3_lora_default", # Trainer 的“工作目录”（日志、checkpoint 等会写在这里）
+    per_device_train_batch_size=2, # 每张设备（GPU）每步喂多少条样本
+    gradient_accumulation_steps=4, # 做 梯度累积。等价于把 4 小步合成 1 大步再 optimizer.step()。 有效 batch size = 2（每设备） × 4（累积步） × 设备数。单卡时就是 2×4=8。
+    num_train_epochs=1, # 训练 1 轮
+    learning_rate=2e-4, # LoRA 的常见学习率量级（可在 1e-4 ~ 5e-4 间微调）
+    fp16=True, # 混合精度（需要支持 FP16 的 GPU）
+    logging_steps=5, # 每隔 5 个 step 打一次日志（loss 等）
+    save_strategy="epoch" # 每个 epoch 结束自动保存一次 checkpoint 到 output_dir
 )
 
 trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=dataset
+    model=model, # “基座 + LoRA”的模型
+    args=training_args, # 需要至少包含 input_ids、attention_mask、labels
+    train_dataset=dataset # 需要至少包含 input_ids、attention_mask、labels
 )
 
+# 进入训练循环
 trainer.train()
 trainer.save_model("lora_default")  # 保存默认 ΔW
 
