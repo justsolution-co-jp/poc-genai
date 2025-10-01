@@ -31,7 +31,7 @@ def get_tokenizer(model_name):
 # eg: dataset = load_dataset("text", data_files="company_corpus.txt", split="train")
 def get_dataset(tokenizer, split="train[:1%]"):
     # dataset = load_dataset("wikitext", "wikitext-2-raw-v1", split=split)
-    dataset = load_dataset("text", data_files={"train": "company_faq.txt"})["train"]
+    dataset = load_dataset("text", data_files={"train": "../lora/company_faq.txt"})["train"]
     
     # truncation=True  如果文本太长，就裁剪到 max_length。避免超过模型的输入上限
     # padding="max_length"  把所有文本填充到 固定长度
